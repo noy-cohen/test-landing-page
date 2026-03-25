@@ -60,7 +60,6 @@ body {
 .btn:hover {
   background: #4f46e5;
   box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
-  transform: translateY(-1px);
 }
 
 /* Features */
@@ -104,7 +103,6 @@ body {
 
 .card:hover {
   box-shadow: 0 8px 28px rgba(99, 102, 241, 0.12);
-  border-color: #c7c9f5;
   background: #e0e0e8;
 }
 
