@@ -96,7 +96,7 @@ body {
   border: 1px solid #ebebf5;
   border-radius: 12px;
   padding: 2rem 1.75rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s;
