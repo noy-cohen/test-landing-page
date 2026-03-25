@@ -8,32 +8,75 @@
   </head>
   <body>
 
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- Hero Section -->
     <section class="hero">
+      <div class="hero-blob hero-blob-1"></div>
+      <div class="hero-blob hero-blob-2"></div>
+      <div class="hero-blob hero-blob-3"></div>
       <div class="container">
+        <div class="hero-badge">✦ Open in any browser</div>
         <h1>Welcome to My Page</h1>
-        <p class="subtitle">A simple, clean landing page built with HTML, CSS, and JavaScript.</p>
-        <a href="#features" class="btn">Learn More</a>
+        <p class="subtitle">
+          A landing page that is
+          <span class="typewriter" id="typewriter"></span>
+        </p>
+        <div class="hero-actions">
+          <a href="#features" class="btn">Explore Features</a>
+          <a href="#cta" class="btn btn-ghost">Get Started →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Row -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat">
+            <span class="stat-number" data-target="100">0</span><span class="stat-unit">%</span>
+            <p>Pure HTML/CSS/JS</p>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="0">0</span>
+            <p>Dependencies</p>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="3">0</span>
+            <p>Files total</p>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="60">0</span><span class="stat-unit">fps</span>
+            <p>Smooth animations</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="features">
       <div class="container">
-        <h2>What's Here</h2>
-        <p class="section-sub">Built from scratch — no frameworks, no fuss.</p>
+        <div class="section-header">
+          <span class="section-label">Features</span>
+          <h2>What's Here</h2>
+          <p class="section-sub">Built from scratch — no frameworks, no fuss.</p>
+        </div>
         <div class="cards">
-          <div class="card">
+          <div class="card" style="--delay: 0ms">
+            <div class="card-accent"></div>
             <div class="card-icon">⚡</div>
             <h3>Simple</h3>
             <p>No frameworks, no build tools. Just plain files you can open in any browser.</p>
           </div>
-          <div class="card">
+          <div class="card" style="--delay: 120ms">
+            <div class="card-accent" style="--accent: #f59e0b"></div>
             <div class="card-icon">🎨</div>
             <h3>Styled</h3>
             <p>Clean layout with a responsive design that works on mobile and desktop.</p>
           </div>
-          <div class="card">
+          <div class="card" style="--delay: 240ms">
+            <div class="card-accent" style="--accent: #10b981"></div>
             <div class="card-icon">✨</div>
             <h3>Interactive</h3>
             <p>A touch of JavaScript for smooth scrolling and a subtle fade-in effect.</p>
@@ -42,13 +85,23 @@
       </div>
     </section>
 
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+      <div class="container">
+        <h2>Ready to build something?</h2>
+        <p>Fork it, remix it, make it yours. Zero setup required.</p>
+        <a href="#features" class="btn btn-white">Start Building</a>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer>
       <div class="container">
-        <p>&copy; 2026 My Landing Page</p>
+        <p>&copy; 2026 My Landing Page &nbsp;·&nbsp; Made with plain HTML</p>
       </div>
     </footer>
 
+    <script src="nav.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

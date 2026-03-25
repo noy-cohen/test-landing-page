@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Features — My Landing Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-label">Features</span>
+        <h1>Everything you need</h1>
+        <p>A complete landing page experience with zero dependencies and full control.</p>
+      </div>
+    </section>
+
+    <!-- Feature list -->
+    <section class="feature-list">
+      <div class="container">
+
+        <div class="feature-item">
+          <div class="feature-visual">⚡</div>
+          <div class="feature-text">
+            <span class="section-label">Performance</span>
+            <h3>Instant load, no overhead</h3>
+            <p>
+              No JavaScript framework, no build step, no runtime — just static files
+              served straight from disk. The page is ready before most SPAs have
+              finished parsing their bundle.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-item reverse">
+          <div class="feature-visual">🎨</div>
+          <div class="feature-text">
+            <span class="section-label">Design</span>
+            <h3>Polished without a design system</h3>
+            <p>
+              Careful use of spacing, type scale, shadows, and color — all hand-crafted
+              in plain CSS. No utility classes, no component library required.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-visual">📱</div>
+          <div class="feature-text">
+            <span class="section-label">Responsive</span>
+            <h3>Works on every screen</h3>
+            <p>
+              CSS Grid and flexible units handle layout at any viewport. The navigation
+              collapses to a hamburger on mobile without a single media-query hack.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-item reverse">
+          <div class="feature-visual">✨</div>
+          <div class="feature-text">
+            <span class="section-label">Animations</span>
+            <h3>Motion that adds meaning</h3>
+            <p>
+              Scroll-triggered fade-ins, animated counters, typewriter text, and floating
+              blobs — all driven by the IntersectionObserver API and requestAnimationFrame.
+              No third-party animation library needed.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="steps">
+      <div class="container">
+        <span class="section-label">How it works</span>
+        <h2>Up and running in 3 steps</h2>
+        <p class="section-sub">No install, no config, no waiting.</p>
+        <div class="steps-grid">
+          <div class="step" style="--delay: 0ms">
+            <div class="step-number">1</div>
+            <h3>Download the files</h3>
+            <p>Three files: <code>index.html</code>, <code>style.css</code>, <code>script.js</code>. That's the whole project.</p>
+          </div>
+          <div class="step" style="--delay: 100ms">
+            <div class="step-number">2</div>
+            <h3>Open in a browser</h3>
+            <p>Double-click the HTML file or run <code>npx serve .</code> for a local server with live reload.</p>
+          </div>
+          <div class="step" style="--delay: 200ms">
+            <div class="step-number">3</div>
+            <h3>Make it yours</h3>
+            <p>Edit the text, swap colors in the CSS variables, add sections — no toolchain required.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats (reused from home) -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat">
+            <span class="stat-number" data-target="100">0</span><span class="stat-unit">%</span>
+            <p>Pure HTML/CSS/JS</p>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="0">0</span>
+            <p>Dependencies</p>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="3">0</span>
+            <p>Files total</p>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="60">0</span><span class="stat-unit">fps</span>
+            <p>Smooth animations</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 My Landing Page &nbsp;·&nbsp; Made with plain HTML</p>
+      </div>
+    </footer>
+
+    <script src="nav.js"></script>
+    <script>
+      // Fade in feature items and steps on scroll
+      const observer = new IntersectionObserver(
+        (entries) => entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+        }),
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll('.feature-item, .step, .stat').forEach((el) => observer.observe(el));
+
+      // Animated counters
+      const statObs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target.querySelector('.stat-number');
+          if (!el || el.dataset.animated) return;
+          el.dataset.animated = '1';
+          const target = parseInt(el.dataset.target, 10);
+          const start = performance.now();
+          (function tick(now) {
+            const p = Math.min((now - start) / 1200, 1);
+            el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+            if (p < 1) requestAnimationFrame(tick); else el.textContent = target;
+          })(start);
+          statObs.unobserve(entry.target);
+        });
+      }, { threshold: 0.3 });
+      document.querySelectorAll('.stat').forEach((el) => statObs.observe(el));
+    </script>
+  </body>
+</html>

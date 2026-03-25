@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — My Landing Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-label">Contact</span>
+        <h1>Say hello</h1>
+        <p>Have an idea, question, or just want to chat? Drop a message.</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Info column -->
+          <div class="contact-info">
+            <h2>Let's talk</h2>
+            <p>
+              Whether you want to collaborate, give feedback, or just share what
+              you built with this template — I'd love to hear from you.
+            </p>
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="contact-method-icon">📧</div>
+                <span>hello@mypage.dev</span>
+              </div>
+              <div class="contact-method">
+                <div class="contact-method-icon">🐙</div>
+                <span>github.com/mypage</span>
+              </div>
+              <div class="contact-method">
+                <div class="contact-method-icon">🐦</div>
+                <span>@mypage</span>
+              </div>
+              <div class="contact-method">
+                <div class="contact-method-icon">📍</div>
+                <span>Somewhere on the internet</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form column -->
+          <div class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First name</label>
+                <input type="text" id="firstName" class="form-input" placeholder="Ada" />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last name</label>
+                <input type="text" id="lastName" class="form-input" placeholder="Lovelace" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-input" placeholder="ada@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" class="form-input form-select">
+                <option value="">Choose a topic…</option>
+                <option>General question</option>
+                <option>Collaboration</option>
+                <option>Feedback</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" class="form-textarea" placeholder="What's on your mind?"></textarea>
+            </div>
+            <button type="button" class="btn form-submit" id="submitBtn">Send message</button>
+            <p class="form-success" id="formSuccess">✓ Message sent — thanks for reaching out!</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 My Landing Page &nbsp;·&nbsp; Made with plain HTML</p>
+      </div>
+    </footer>
+
+    <script src="nav.js"></script>
+    <script>
+      document.getElementById('submitBtn').addEventListener('click', function () {
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        if (!email || !message) {
+          document.getElementById('email').style.borderColor = email ? '' : '#ef4444';
+          document.getElementById('message').style.borderColor = message ? '' : '#ef4444';
+          return;
+        }
+        this.textContent = 'Sending…';
+        this.disabled = true;
+        setTimeout(() => {
+          document.getElementById('contactForm').style.opacity = '0.4';
+          document.getElementById('formSuccess').style.display = 'block';
+          this.style.display = 'none';
+        }, 900);
+      });
+    </script>
+  </body>
+</html>
